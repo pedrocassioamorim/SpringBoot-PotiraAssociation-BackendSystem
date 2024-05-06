@@ -1,24 +1,26 @@
 package com.example.associacao_potira.domain.cannabis;
 
-import com.example.associacao_potira.infraestructure.enums.Specie;
-import com.example.associacao_potira.infraestructure.enums.Tested;
-import com.example.associacao_potira.infraestructure.enums.TypeOfPlant;
+import com.example.associacao_potira.domain.cannabis.enums.Specie;
+import com.example.associacao_potira.domain.cannabis.enums.Tested;
+import com.example.associacao_potira.domain.cannabis.enums.TypeOfPlant;
 import com.example.associacao_potira.domain.honey.Honey;
 import jakarta.persistence.*;
-
-import lombok.Data;
-import lombok.EqualsAndHashCode;;
+import lombok.*;
+import org.hibernate.proxy.HibernateProxy;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
-@Data @Entity @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+;
+
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
+@Entity
 public class Cannabis {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY) @EqualsAndHashCode.Include
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
@@ -50,6 +52,7 @@ public class Cannabis {
     private Honey honey = new Honey();
 
     @OneToMany
+    @ToString.Exclude
     private List<Clone> clones = new ArrayList<>();
 
     @ManyToMany
@@ -57,6 +60,22 @@ public class Cannabis {
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "plant_id")
     )
+    @ToString.Exclude
     private Set<CannabisProduct> products= new HashSet<>();
 
+    @Override
+    public final boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null) return false;
+        Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
+        Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
+        if (thisEffectiveClass != oEffectiveClass) return false;
+        Cannabis cannabis = (Cannabis) o;
+        return getId() != null && Objects.equals(getId(), cannabis.getId());
+    }
+
+    @Override
+    public final int hashCode() {
+        return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
+    }
 }

@@ -1,19 +1,22 @@
 package com.example.associacao_potira.domain.honey;
 
 import com.example.associacao_potira.domain.cannabis.Cannabis;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import com.example.associacao_potira.domain.honey.enums.TypeOfNectar;
+import jakarta.persistence.*;
+import lombok.*;
+import org.hibernate.proxy.HibernateProxy;
 
 import java.time.Duration;
+import java.util.Objects;
 
-@Data @Entity @EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Getter
+@Setter
+@ToString
+@RequiredArgsConstructor
+@Entity
 public class Honey {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String nome;
@@ -23,6 +26,25 @@ public class Honey {
     @OneToOne
     private Cannabis cannabis;
 
+    @Enumerated(EnumType.STRING)
+    private TypeOfNectar nectar;
+
     @Column(name = "life_in_days")
     private Duration lifeCycleInDays;
+
+    @Override
+    public final boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null) return false;
+        Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
+        Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
+        if (thisEffectiveClass != oEffectiveClass) return false;
+        Honey honey = (Honey) o;
+        return getId() != null && Objects.equals(getId(), honey.getId());
+    }
+
+    @Override
+    public final int hashCode() {
+        return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
+    }
 }

@@ -61,6 +61,7 @@
             <artifactId>spring-boot-configuration-processor</artifactId>
             <scope>annotationProcessor</scope>
         </dependency>
+
     </dependencies>
 
     <build>
