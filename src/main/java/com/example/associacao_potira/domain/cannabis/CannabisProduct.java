@@ -18,9 +18,13 @@ public class CannabisProduct {
 
     private String name;
 
+    @Column(name = "image")
     private String imageURL;
 
     private Integer dosage;
+
+    @ManyToOne @JoinColumn(name = "cannabis_id")
+    private Cannabis cannabis;
 
     @Column(columnDefinition = "TEXT")
     private String Description;

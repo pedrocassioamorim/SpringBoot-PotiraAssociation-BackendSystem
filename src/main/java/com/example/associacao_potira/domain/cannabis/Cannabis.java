@@ -4,16 +4,12 @@ import com.example.associacao_potira.infraestructure.enums.Specie;
 import com.example.associacao_potira.infraestructure.enums.Tested;
 import com.example.associacao_potira.infraestructure.enums.TypeOfPlant;
 import com.example.associacao_potira.domain.honey.Honey;
-import com.fasterxml.jackson.annotation.JsonSubTypes;
 import jakarta.persistence.*;
-import javafx.css.converter.DurationConverter;
+
 import lombok.Data;
-import lombok.EqualsAndHashCode;
-import org.hibernate.annotations.Type;
-import org.springframework.beans.factory.annotation.Value;
+import lombok.EqualsAndHashCode;;
 
 import java.math.BigDecimal;
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
