@@ -1,6 +1,7 @@
 package com.example.associacao_potira.domain.cannabis;
 
 import com.example.associacao_potira.domain.cannabis.enums.TypeOfPlant;
+import com.example.associacao_potira.domain.company.data.Product;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
@@ -13,7 +14,7 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Entity
-public class SeedProduct {
+public class SeedProduct extends Product {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

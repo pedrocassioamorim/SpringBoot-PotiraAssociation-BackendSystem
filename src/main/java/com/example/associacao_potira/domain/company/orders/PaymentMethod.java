@@ -1,12 +1,9 @@
-package com.example.associacao_potira.domain.gummy;
+package com.example.associacao_potira.domain.company.orders;
 
-
-import com.example.associacao_potira.domain.company.data.Product;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
-import java.math.BigDecimal;
 import java.util.Objects;
 
 @Getter
@@ -14,25 +11,15 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Entity
-public class GummyProduct extends Product {
-
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class PaymentMethod {
+    @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     private String name;
 
-    private String description;
-
-    private BigDecimal price;
-
-    private String imageUrl;
-
-    @ManyToOne
-    private Gummy gummy;
-
-    private Long volume;
-
-    private Long weight;
+    private String technology;
 
     @Override
     public final boolean equals(Object o) {
@@ -41,7 +28,7 @@ public class GummyProduct extends Product {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        GummyProduct that = (GummyProduct) o;
+        PaymentMethod that = (PaymentMethod) o;
         return getId() != null && Objects.equals(getId(), that.getId());
     }
 

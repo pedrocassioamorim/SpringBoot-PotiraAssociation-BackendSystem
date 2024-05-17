@@ -1,5 +1,6 @@
 package com.example.associacao_potira.domain.honey;
 
+import com.example.associacao_potira.domain.company.data.Product;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -15,7 +16,7 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Entity
-public class HoneyProduct {
+public class HoneyProduct extends Product {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

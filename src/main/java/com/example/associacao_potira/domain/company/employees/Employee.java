@@ -1,12 +1,11 @@
-package com.example.associacao_potira.domain.gummy;
+package com.example.associacao_potira.domain.company.employees;
 
-
-import com.example.associacao_potira.domain.company.data.Product;
+import com.example.associacao_potira.domain.company.employees.enums.Department;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
-import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Objects;
 
 @Getter
@@ -14,25 +13,33 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Entity
-public class GummyProduct extends Product {
+public class Employee {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
 
-    private String description;
+    @Column(name = "last_name")
+    private String lastName;
 
-    private BigDecimal price;
+    private String cpf;
 
-    private String imageUrl;
+    @Column(name = "birth_date")
+    private LocalDate birthDate;
 
-    @ManyToOne
-    private Gummy gummy;
+    private String email;
 
-    private Long volume;
+    private String phone;
 
-    private Long weight;
+    private String address;
+
+    private Double salary;
+
+    @Enumerated(EnumType.STRING)
+    private Department department;
+
 
     @Override
     public final boolean equals(Object o) {
@@ -41,8 +48,8 @@ public class GummyProduct extends Product {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        GummyProduct that = (GummyProduct) o;
-        return getId() != null && Objects.equals(getId(), that.getId());
+        Employee employee = (Employee) o;
+        return getId() != null && Objects.equals(getId(), employee.getId());
     }
 
     @Override

@@ -1,7 +1,5 @@
-package com.example.associacao_potira.domain.gummy;
+package com.example.associacao_potira.domain.company.data;
 
-
-import com.example.associacao_potira.domain.company.data.Product;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
@@ -14,39 +12,30 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Entity
-public class GummyProduct extends Product {
+public class Product {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name = "id", nullable = false)
     private Long id;
 
     private String name;
 
-    private String description;
-
     private BigDecimal price;
 
-    private String imageUrl;
-
-    @ManyToOne
-    private Gummy gummy;
-
-    private Long volume;
-
-    private Long weight;
-
     @Override
-    public final boolean equals(Object o) {
+    public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null) return false;
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        GummyProduct that = (GummyProduct) o;
-        return getId() != null && Objects.equals(getId(), that.getId());
+        Product product = (Product) o;
+        return getId() != null && Objects.equals(getId(), product.getId());
     }
 
     @Override
-    public final int hashCode() {
+    public int hashCode() {
         return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
     }
 }
