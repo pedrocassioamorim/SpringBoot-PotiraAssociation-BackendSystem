@@ -185,6 +185,12 @@ set MAVEN_CMD_LINE_ARGS=%*
 if ERRORLEVEL 1 goto error
 goto end
 
+
+
+
+
+
+
 :error
 set ERROR_CODE=1
 

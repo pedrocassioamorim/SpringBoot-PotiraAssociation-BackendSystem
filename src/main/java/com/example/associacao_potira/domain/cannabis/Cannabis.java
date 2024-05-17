@@ -56,9 +56,9 @@ public class Cannabis {
     private List<Clone> clones = new ArrayList<>();
 
     @ManyToMany
-    @JoinTable(name = "product_plants",
+    @JoinTable(name = "cannabis_product",
             joinColumns = @JoinColumn(name = "product_id"),
-            inverseJoinColumns = @JoinColumn(name = "plant_id")
+            inverseJoinColumns = @JoinColumn(name = "cannabis_id")
     )
     @ToString.Exclude
     private Set<CannabisProduct> products= new HashSet<>();

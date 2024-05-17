@@ -6,6 +6,7 @@ import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -19,14 +20,18 @@ public class OrderItem {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @OneToOne
+    @ManyToOne @JoinColumn(name = "order_item_per_product", nullable = false)
     private Product product;
 
     private Integer quantity;
 
     private BigDecimal price;
 
-    public BigDecimal totalOrdemItem(){
+    @ManyToMany
+    private List<Order> orders;
+
+
+    public BigDecimal totalOrderItem(){
         BigDecimal total = price.multiply(BigDecimal.valueOf(quantity));
         return total;
     }
