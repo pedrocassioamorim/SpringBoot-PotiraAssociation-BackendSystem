@@ -1,6 +1,6 @@
 package com.example.associacao_potira.domain.company.employees;
 
-import com.example.associacao_potira.domain.company.employees.enums.Department;
+import com.example.associacao_potira.domain.enums.employee.Department;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;

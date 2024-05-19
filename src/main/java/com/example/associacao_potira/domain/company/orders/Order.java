@@ -10,12 +10,14 @@ import org.hibernate.proxy.HibernateProxy;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
 @Entity
+@Table(name = "ordem")
 public class Order {
 
     @Id
@@ -25,9 +27,9 @@ public class Order {
 
     @ManyToMany @JoinTable(name = "orders_per_items",
             joinColumns = @JoinColumn(name = "order_item_id"),
-            inverseJoinColumns = @JoinColumn(name = "order_id"))
+            inverseJoinColumns = @JoinColumn(name = "ordem_id"))
     @ToString.Exclude
-    private List<OrderItem> items;
+    private Set<OrderItem> items;
 
     public BigDecimal totalOrder(){
         BigDecimal total = BigDecimal.ZERO;

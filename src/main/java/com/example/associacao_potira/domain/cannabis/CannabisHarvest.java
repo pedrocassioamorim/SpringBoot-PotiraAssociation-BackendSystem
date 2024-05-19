@@ -1,5 +1,6 @@
 package com.example.associacao_potira.domain.cannabis;
 
+import com.example.associacao_potira.domain.cannabis.seed.Clone;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;

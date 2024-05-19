@@ -14,18 +14,15 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Entity
+@PrimaryKeyJoinColumn(name = "PRODUCT_ID")
 public class GummyProduct extends Product {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    private String name;
-
-    private String description;
-
     private BigDecimal price;
-
-    private String imageUrl;
 
     @ManyToOne
     private Gummy gummy;
@@ -49,4 +46,6 @@ public class GummyProduct extends Product {
     public final int hashCode() {
         return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
     }
+
+
 }

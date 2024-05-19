@@ -1,41 +1,32 @@
 package com.example.associacao_potira.domain.company.data;
 
+import com.example.associacao_potira.domain.enums.cannabis.Nature;
 import jakarta.persistence.*;
 import lombok.*;
-import org.hibernate.proxy.HibernateProxy;
-
-import java.math.BigDecimal;
-import java.util.Objects;
 
 @Getter
 @Setter
-@ToString
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Product {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
     private String name;
 
-    private BigDecimal price;
+    @Enumerated(EnumType.STRING)
+    private Nature nature;
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null) return false;
-        Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
-        Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
-        if (thisEffectiveClass != oEffectiveClass) return false;
-        Product product = (Product) o;
-        return getId() != null && Objects.equals(getId(), product.getId());
-    }
+    @Column(name = "image")
+    private String imageURL;
 
-    @Override
-    public int hashCode() {
-        return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
-    }
+    @Column(columnDefinition = "TEXT")
+    private String description;
+
+
+
 }

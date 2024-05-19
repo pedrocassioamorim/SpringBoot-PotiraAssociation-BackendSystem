@@ -1,6 +1,5 @@
 package com.example.associacao_potira.domain.cannabis;
 
-import com.example.associacao_potira.domain.cannabis.enums.TypeOfPlant;
 import com.example.associacao_potira.domain.company.data.Product;
 import jakarta.persistence.*;
 import lombok.*;
@@ -16,26 +15,19 @@ import java.util.Set;
 @ToString
 @RequiredArgsConstructor
 @Entity
+@PrimaryKeyJoinColumn(name = "PRODUCT_ID")
 public class CannabisProduct extends Product {
 
-    @jakarta.persistence.Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-
-    @Enumerated(EnumType.STRING)
-    private TypeOfPlant type;
-
-    private String name;
-
-    @Column(name = "image")
-    private String imageURL;
 
     private Integer dosage;
 
     @ManyToOne @JoinColumn(name = "cannabis_id")
     private Cannabis cannabis;
 
-    @Column(columnDefinition = "TEXT")
-    private String Description;
 
     private BigDecimal price;
 
@@ -62,4 +54,5 @@ public class CannabisProduct extends Product {
     public final int hashCode() {
         return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
     }
+
 }

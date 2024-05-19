@@ -1,4 +1,4 @@
-package com.example.associacao_potira.domain.cannabis.enums;
+package com.example.associacao_potira.domain.enums.cannabis;
 
 public enum Specie {
     Indica,

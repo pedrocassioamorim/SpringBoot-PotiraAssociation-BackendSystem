@@ -1,8 +1,9 @@
 package com.example.associacao_potira.domain.cannabis;
 
-import com.example.associacao_potira.domain.cannabis.enums.Specie;
-import com.example.associacao_potira.domain.cannabis.enums.Tested;
-import com.example.associacao_potira.domain.cannabis.enums.TypeOfPlant;
+import com.example.associacao_potira.domain.enums.cannabis.Specie;
+import com.example.associacao_potira.domain.enums.cannabis.Tested;
+import com.example.associacao_potira.domain.enums.cannabis.Nature;
+import com.example.associacao_potira.domain.cannabis.seed.Clone;
 import com.example.associacao_potira.domain.honey.Honey;
 import jakarta.persistence.*;
 import lombok.*;
@@ -18,6 +19,7 @@ import java.util.*;
 @ToString
 @RequiredArgsConstructor
 @Entity
+@Table(name = "cannabis")
 public class Cannabis {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,8 +33,8 @@ public class Cannabis {
     @Enumerated(EnumType.STRING)
     private Specie specie;
 
-    @Enumerated(EnumType.STRING)
-    private TypeOfPlant type;
+    @Enumerated(EnumType.STRING) @Column(name = "nature")
+    private Nature type;
 
     private BigDecimal level;
 
@@ -56,7 +58,7 @@ public class Cannabis {
     private List<Clone> clones = new ArrayList<>();
 
     @ManyToMany
-    @JoinTable(name = "cannabis_product",
+    @JoinTable(name = "product_plants",
             joinColumns = @JoinColumn(name = "product_id"),
             inverseJoinColumns = @JoinColumn(name = "cannabis_id")
     )

@@ -1,6 +1,6 @@
 package com.example.associacao_potira.domain.gummy;
 
-import com.example.associacao_potira.domain.gummy.enums.BaseOfGummy;
+import com.example.associacao_potira.domain.enums.gummy.BaseOfGummy;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;

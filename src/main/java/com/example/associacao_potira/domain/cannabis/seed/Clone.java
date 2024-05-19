@@ -1,12 +1,12 @@
-package com.example.associacao_potira.domain.cannabis;
+package com.example.associacao_potira.domain.cannabis.seed;
 
-import com.example.associacao_potira.domain.cannabis.enums.TypeOfPlant;
-import com.example.associacao_potira.domain.company.data.Product;
+import com.example.associacao_potira.domain.cannabis.Cannabis;
+import com.example.associacao_potira.domain.cannabis.CannabisHarvest;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
-import java.math.BigDecimal;
+import java.util.List;
 import java.util.Objects;
 
 @Getter
@@ -14,23 +14,17 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Entity
-public class SeedProduct extends Product {
+public class Clone {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    private Seed seed;
+    private Cannabis cannabis;
 
-    @Enumerated(EnumType.STRING)
-    private TypeOfPlant type;
-
-    @Column(name = "number_of_seeds")
-    private Integer numberOfSeeds;
-
-    private String description;
-
-    private BigDecimal price;
+    @ManyToMany
+    @ToString.Exclude
+    private List<CannabisHarvest> harvests;
 
     @Override
     public final boolean equals(Object o) {
@@ -39,8 +33,8 @@ public class SeedProduct extends Product {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        SeedProduct product = (SeedProduct) o;
-        return getId() != null && Objects.equals(getId(), product.getId());
+        Clone clone = (Clone) o;
+        return getId() != null && Objects.equals(getId(), clone.getId());
     }
 
     @Override

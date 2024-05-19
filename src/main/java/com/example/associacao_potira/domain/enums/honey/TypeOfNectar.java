@@ -1,4 +1,4 @@
-package com.example.associacao_potira.domain.honey.enums;
+package com.example.associacao_potira.domain.enums.honey;
 
 public enum TypeOfNectar {
 

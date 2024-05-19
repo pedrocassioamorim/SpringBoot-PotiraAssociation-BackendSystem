@@ -1,29 +1,34 @@
-package com.example.associacao_potira.domain.cannabis;
+package com.example.associacao_potira.domain.cannabis.seed;
 
+import com.example.associacao_potira.domain.company.data.Product;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 @Getter
 @Setter
 @ToString
 @RequiredArgsConstructor
+@PrimaryKeyJoinColumn(name = "PRODUCT_ID")
 @Entity
-public class Seed {
+public class SeedProduct extends Product {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
 
-    @OneToOne
-    private Cannabis cannabis;
+    @ManyToOne
+    private Seed seed;
 
-    private String name;
+    @Column(name = "number_of_seeds")
+    private Integer numberOfSeeds;
 
-    private String description;
 
-    private String image;
+    private BigDecimal price;
 
     @Override
     public final boolean equals(Object o) {
@@ -32,12 +37,13 @@ public class Seed {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        Seed seed = (Seed) o;
-        return getId() != null && Objects.equals(getId(), seed.getId());
+        SeedProduct product = (SeedProduct) o;
+        return getId() != null && Objects.equals(getId(), product.getId());
     }
 
     @Override
     public final int hashCode() {
         return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
     }
+
 }

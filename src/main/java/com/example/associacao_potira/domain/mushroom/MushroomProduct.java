@@ -1,5 +1,6 @@
 package com.example.associacao_potira.domain.mushroom;
 
+import com.example.associacao_potira.domain.company.data.Product;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
@@ -12,16 +13,13 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Entity
-public class MushroomProduct {
+@PrimaryKeyJoinColumn(name = "PRODUCT_ID")
+public class MushroomProduct extends Product {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-
-    private String name;
-
-    private String description;
-
-    private String imageURL;
 
     @Column(name = "price_kg")
     private BigDecimal priceKG;
@@ -42,4 +40,5 @@ public class MushroomProduct {
     public final int hashCode() {
         return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
     }
+
 }

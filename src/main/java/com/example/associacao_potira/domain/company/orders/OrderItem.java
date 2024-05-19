@@ -8,6 +8,7 @@ import org.hibernate.proxy.HibernateProxy;
 import java.math.BigDecimal;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -20,7 +21,7 @@ public class OrderItem {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @ManyToOne @JoinColumn(name = "order_item_per_product", nullable = false)
+    @ManyToOne @JoinColumn(name = "product_per_orderItem", nullable = false)
     private Product product;
 
     private Integer quantity;
@@ -28,7 +29,7 @@ public class OrderItem {
     private BigDecimal price;
 
     @ManyToMany
-    private List<Order> orders;
+    private Set<Order> orders;
 
 
     public BigDecimal totalOrderItem(){

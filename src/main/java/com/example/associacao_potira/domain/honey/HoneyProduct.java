@@ -1,10 +1,7 @@
 package com.example.associacao_potira.domain.honey;
 
 import com.example.associacao_potira.domain.company.data.Product;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
@@ -16,22 +13,17 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Entity
+@PrimaryKeyJoinColumn(name = "PRODUCT_ID")
 public class HoneyProduct extends Product {
 
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
-
-    private String name;
-
-    private String description;
 
     private BigDecimal price;
 
-    private String image;
-
     private String category;
-
-    private String type;
 
     private String color;
 
@@ -55,4 +47,5 @@ public class HoneyProduct extends Product {
     public final int hashCode() {
         return this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass().hashCode() : getClass().hashCode();
     }
+
 }

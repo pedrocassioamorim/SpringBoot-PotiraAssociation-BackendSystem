@@ -1,7 +1,7 @@
 package com.example.associacao_potira.domain.honey;
 
 import com.example.associacao_potira.domain.cannabis.Cannabis;
-import com.example.associacao_potira.domain.honey.enums.TypeOfNectar;
+import com.example.associacao_potira.domain.enums.honey.TypeOfNectar;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;

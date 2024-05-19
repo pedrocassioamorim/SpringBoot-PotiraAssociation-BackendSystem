@@ -1,4 +1,4 @@
-package com.example.associacao_potira.domain.company.employees.enums;
+package com.example.associacao_potira.domain.enums.employee;
 
 public enum Department {
 
