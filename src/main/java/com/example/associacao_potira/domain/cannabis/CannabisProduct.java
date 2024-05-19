@@ -26,7 +26,7 @@ public class CannabisProduct extends Product {
     private Integer dosage;
 
     @ManyToOne @JoinColumn(name = "cannabis_id")
-    private Cannabis cannabis;
+    private CannabisPlant cannabisPlant;
 
 
     private BigDecimal price;
@@ -37,7 +37,7 @@ public class CannabisProduct extends Product {
 
     @ManyToMany(mappedBy = "products")
     @ToString.Exclude
-    private Set<Cannabis> plants = new HashSet<>();
+    private Set<CannabisPlant> plants = new HashSet<>();
 
     @Override
     public final boolean equals(Object o) {

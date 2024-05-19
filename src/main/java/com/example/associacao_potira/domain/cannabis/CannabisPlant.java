@@ -20,7 +20,7 @@ import java.util.*;
 @RequiredArgsConstructor
 @Entity
 @Table(name = "cannabis")
-public class Cannabis {
+public class CannabisPlant {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -34,7 +34,7 @@ public class Cannabis {
     private Specie specie;
 
     @Enumerated(EnumType.STRING) @Column(name = "nature")
-    private Nature type;
+    private Nature nature;
 
     private BigDecimal level;
 
@@ -50,7 +50,7 @@ public class Cannabis {
     @Column(name = "life_in_weeks")
     private Long lifeCycleInWeeks;
 
-    @OneToOne(mappedBy = "cannabis")
+    @OneToOne(mappedBy = "cannabisPlant")
     private Honey honey = new Honey();
 
     @OneToMany
@@ -72,8 +72,8 @@ public class Cannabis {
         Class<?> oEffectiveClass = o instanceof HibernateProxy ? ((HibernateProxy) o).getHibernateLazyInitializer().getPersistentClass() : o.getClass();
         Class<?> thisEffectiveClass = this instanceof HibernateProxy ? ((HibernateProxy) this).getHibernateLazyInitializer().getPersistentClass() : this.getClass();
         if (thisEffectiveClass != oEffectiveClass) return false;
-        Cannabis cannabis = (Cannabis) o;
-        return getId() != null && Objects.equals(getId(), cannabis.getId());
+        CannabisPlant cannabisPlant = (CannabisPlant) o;
+        return getId() != null && Objects.equals(getId(), cannabisPlant.getId());
     }
 
     @Override

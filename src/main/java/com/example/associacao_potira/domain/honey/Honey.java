@@ -1,6 +1,6 @@
 package com.example.associacao_potira.domain.honey;
 
-import com.example.associacao_potira.domain.cannabis.Cannabis;
+import com.example.associacao_potira.domain.cannabis.CannabisPlant;
 import com.example.associacao_potira.domain.enums.honey.TypeOfNectar;
 import jakarta.persistence.*;
 import lombok.*;
@@ -24,7 +24,7 @@ public class Honey {
     private String descricao;
 
     @OneToOne
-    private Cannabis cannabis;
+    private CannabisPlant cannabisPlant;
 
     @Enumerated(EnumType.STRING)
     private TypeOfNectar nectar;

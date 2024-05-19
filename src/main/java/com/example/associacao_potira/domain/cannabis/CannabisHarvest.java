@@ -22,7 +22,7 @@ public class CannabisHarvest {
 
     @ManyToOne
     @JoinColumn(name = "cannabis_id", nullable = false)
-    private Cannabis cannabis;
+    private CannabisPlant cannabisPlant;
 
     @Column(name = "clones", nullable = false)
     private Integer numberOfClones;
@@ -30,19 +30,20 @@ public class CannabisHarvest {
     @Column(nullable = false)
     private Instant begin = Instant.now();
 
-    public Duration getDuration(){
-        Long days = cannabis.getLifeCycleInWeeks();
-        Instant endOfLife = begin.plus(Duration.ofDays(days));
-        Duration quantoFalta = Duration.between(Instant.now(), endOfLife);
-        return quantoFalta.abs();
-    }
-
     @ManyToMany
     @JoinTable( name = "harvest_clones",
             joinColumns = @JoinColumn(name = "harvest_id"),
             inverseJoinColumns = @JoinColumn(name = "clones_id"))
     @ToString.Exclude
     private List<Clone> clones;
+
+
+    public Duration getDuration(){
+        Long days = cannabisPlant.getLifeCycleInWeeks();
+        Instant endOfLife = begin.plus(Duration.ofDays(days));
+        Duration quantoFalta = Duration.between(Instant.now(), endOfLife);
+        return quantoFalta.abs();
+    }
 
     @Override
     public final boolean equals(Object o) {

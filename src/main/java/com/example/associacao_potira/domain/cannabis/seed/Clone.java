@@ -1,6 +1,6 @@
 package com.example.associacao_potira.domain.cannabis.seed;
 
-import com.example.associacao_potira.domain.cannabis.Cannabis;
+import com.example.associacao_potira.domain.cannabis.CannabisPlant;
 import com.example.associacao_potira.domain.cannabis.CannabisHarvest;
 import jakarta.persistence.*;
 import lombok.*;
@@ -20,7 +20,7 @@ public class Clone {
     private Long id;
 
     @ManyToOne
-    private Cannabis cannabis;
+    private CannabisPlant cannabisPlant;
 
     @ManyToMany
     @ToString.Exclude

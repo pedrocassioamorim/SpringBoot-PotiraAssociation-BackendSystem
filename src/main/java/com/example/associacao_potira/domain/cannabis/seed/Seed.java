@@ -1,6 +1,6 @@
 package com.example.associacao_potira.domain.cannabis.seed;
 
-import com.example.associacao_potira.domain.cannabis.Cannabis;
+import com.example.associacao_potira.domain.cannabis.CannabisPlant;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
@@ -18,7 +18,7 @@ public class Seed {
     private Long id;
 
     @OneToOne
-    private Cannabis cannabis;
+    private CannabisPlant cannabisPlant;
 
     private String name;
 
