@@ -1,6 +1,5 @@
 package com.example.associacao_potira.domain.company.employees;
 
-import com.example.associacao_potira.domain.enums.employee.Department;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
@@ -37,7 +36,7 @@ public class Employee {
 
     private Double salary;
 
-    @Enumerated(EnumType.STRING)
+    @OneToOne
     private Department department;
 
 

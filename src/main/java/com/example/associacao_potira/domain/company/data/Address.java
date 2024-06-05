@@ -1,15 +1,13 @@
 package com.example.associacao_potira.domain.company.data;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data @Entity @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 public class Address {
 
-    @Id
+    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String street;
