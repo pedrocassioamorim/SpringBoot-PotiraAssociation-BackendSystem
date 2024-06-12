@@ -5,6 +5,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -14,7 +16,10 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @PrimaryKeyJoinColumn(name = "PRODUCT_ID")
-public class MushroomProduct extends Product {
+public class MushroomProduct extends Product implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

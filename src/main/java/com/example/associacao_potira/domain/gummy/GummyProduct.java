@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
@@ -15,12 +17,10 @@ import java.util.Objects;
 @RequiredArgsConstructor
 @Entity
 @PrimaryKeyJoinColumn(name = "PRODUCT_ID")
-public class GummyProduct extends Product {
+public class GummyProduct extends Product implements Serializable {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     private BigDecimal price;
 
