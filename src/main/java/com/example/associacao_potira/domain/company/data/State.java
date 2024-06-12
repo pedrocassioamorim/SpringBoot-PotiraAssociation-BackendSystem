@@ -10,6 +10,8 @@ import lombok.Setter;
 import lombok.ToString;
 import org.hibernate.proxy.HibernateProxy;
 
+import java.io.Serial;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Getter
@@ -17,7 +19,10 @@ import java.util.Objects;
 @ToString
 @RequiredArgsConstructor
 @Entity
-public class State {
+public class State implements Serializable {
+
+    @Serial
+    private static final long serialVersionUID = 1L;
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
