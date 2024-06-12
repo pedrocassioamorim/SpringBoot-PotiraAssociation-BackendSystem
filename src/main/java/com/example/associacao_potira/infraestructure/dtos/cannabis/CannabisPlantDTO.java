@@ -48,7 +48,7 @@ public class CannabisPlantDTO implements Serializable {
 
     private List<Clone> clones = new ArrayList<>();
 
-    private Set<CannabisProduct> products= new HashSet<>();
+    private List<CannabisProduct> products= new ArrayList<>();
 
 
 

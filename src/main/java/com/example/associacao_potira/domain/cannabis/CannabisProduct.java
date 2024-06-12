@@ -6,9 +6,7 @@ import lombok.*;
 import org.hibernate.proxy.HibernateProxy;
 
 import java.math.BigDecimal;
-import java.util.HashSet;
-import java.util.Objects;
-import java.util.Set;
+import java.util.*;
 
 @Getter
 @Setter
@@ -28,7 +26,6 @@ public class CannabisProduct extends Product {
     @ManyToOne @JoinColumn(name = "cannabis_id")
     private CannabisPlant cannabisPlant;
 
-
     private BigDecimal price;
 
     private Long volume;
@@ -37,7 +34,7 @@ public class CannabisProduct extends Product {
 
     @ManyToMany(mappedBy = "products")
     @ToString.Exclude
-    private Set<CannabisPlant> plants = new HashSet<>();
+    private List<CannabisPlant> plants = new ArrayList<>();
 
     @Override
     public final boolean equals(Object o) {

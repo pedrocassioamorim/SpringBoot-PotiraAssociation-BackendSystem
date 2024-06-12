@@ -63,7 +63,7 @@ public class CannabisPlant {
             inverseJoinColumns = @JoinColumn(name = "cannabis_id")
     )
     @ToString.Exclude
-    private Set<CannabisProduct> products= new HashSet<>();
+    private List<CannabisProduct> products = new ArrayList<>();
 
     @Override
     public final boolean equals(Object o) {
