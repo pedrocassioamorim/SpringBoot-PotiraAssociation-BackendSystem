@@ -84,6 +84,7 @@ INSERT INTO address (city_id, state_id, complement, number, street) VALUES (1, 1
 INSERT INTO department (location_id, description, name) VALUES (1, 'Sales Departament', 'Vendas');
 INSERT INTO employee (first_name, last_name, cpf, birth_date, email, phone, address, salary, department_id) VALUES('Pedro Cássio', 'Dias de Amorim', '983.635.492-15', '1995-09-29', 'amorimpedrocassio@gmail.com', '(91) 99233-1623', 'Passagem Bela Vista, 150, São João' , 10000.0 , 1);
 INSERT INTO employee (first_name, last_name, cpf, birth_date, email, phone, address, salary ) VALUES('Seu Pedrinho', '24h/7d', '999.999.999-99', '1990-10-11', 'seupedrinho@gmail.com', '(91) 99255-9999', 'Passagem Bela Vista, 150, São João' , 5000.0 );
+INSERT INTO employee (first_name, last_name, cpf, birth_date, email, phone, address, salary ) VALUES('Potal', 'Senhor Pícolo', '999.999.999-99', '1960-10-11', 'potal@gmail.com', '(91) 99211-9999', 'Dom Pedro I, 456 , São João' , 3000.0 );
 INSERT INTO cannabis_product (cannabis_id, product_id, dosage, price, volume, weight) VALUES (1, 1, 1000, 150, 50, 75);
 INSERT INTO cannabis_product (cannabis_id, product_id, dosage, price, volume, weight) VALUES (2, 2, 500, 450, 50, 75);
 INSERT INTO cannabis_product (cannabis_id, product_id, dosage, price, volume, weight) VALUES (3, 3, 500, 450, 50, 75);
