@@ -31,7 +31,7 @@ public class Department implements Serializable {
 
     private String description;
 
-    @OneToOne
+    @ManyToOne
     private Address location;
 
     @OneToMany
