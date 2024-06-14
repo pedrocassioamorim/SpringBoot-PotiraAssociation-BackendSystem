@@ -1,6 +1,5 @@
 package com.example.associacao_potira.domain.company.employees;
 
-
 import com.example.associacao_potira.domain.company.data.Address;
 import jakarta.persistence.*;
 import lombok.*;
