@@ -26,9 +26,14 @@ public class CannabisProduct extends Product implements Serializable {
     @ManyToOne @JoinColumn(name = "cannabis_id")
     private CannabisPlant cannabisPlant;
 
+    private Double mass;
+
     private Long volume;
 
     private Long weight;
+
+    @Column(name = "final_price")
+    private BigDecimal finalPrice;
 
     @ManyToMany(mappedBy = "products")
     @ToString.Exclude
