@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 
 @Getter
 @Setter
@@ -29,6 +30,9 @@ public class Product implements Serializable {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    private BigDecimal price;
+
+    private Double mass;
 
 
 }

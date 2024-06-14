@@ -22,8 +22,6 @@ public class GummyProduct extends Product implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private BigDecimal price;
-
     @ManyToOne
     private Gummy gummy;
 

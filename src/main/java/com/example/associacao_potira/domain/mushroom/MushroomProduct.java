@@ -21,11 +21,6 @@ public class MushroomProduct extends Product implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
-
     @Column(name = "price_kg")
     private BigDecimal priceKG;
 

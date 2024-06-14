@@ -21,8 +21,6 @@ public class HoneyProduct extends Product implements Serializable {
     @Serial
     private static final long serialVersionUID = 1L;
 
-    private BigDecimal price;
-
     private String category;
 
     private String color;
