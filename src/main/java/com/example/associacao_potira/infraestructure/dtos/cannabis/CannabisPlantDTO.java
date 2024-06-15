@@ -1,21 +1,18 @@
 package com.example.associacao_potira.infraestructure.dtos.cannabis;
 
 import com.example.associacao_potira.domain.cannabis.CannabisPlant;
-import com.example.associacao_potira.domain.cannabis.CannabisProduct;
 import com.example.associacao_potira.domain.cannabis.seed.Clone;
+import com.example.associacao_potira.domain.company.data.Product;
 import com.example.associacao_potira.domain.enums.cannabis.Nature;
 import com.example.associacao_potira.domain.enums.cannabis.Specie;
 import com.example.associacao_potira.domain.enums.cannabis.Tested;
 import com.example.associacao_potira.domain.honey.Honey;
 import jakarta.persistence.*;
-import lombok.ToString;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class CannabisPlantDTO implements Serializable {
 
@@ -48,7 +45,7 @@ public class CannabisPlantDTO implements Serializable {
 
     private List<Clone> clones = new ArrayList<>();
 
-    private List<CannabisProduct> products= new ArrayList<>();
+    private List<Product> products= new ArrayList<>();
 
 
 

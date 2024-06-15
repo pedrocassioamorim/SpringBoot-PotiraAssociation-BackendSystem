@@ -1,5 +1,6 @@
 package com.example.associacao_potira.domain.cannabis;
 
+import com.example.associacao_potira.domain.company.data.Product;
 import com.example.associacao_potira.domain.enums.cannabis.Specie;
 import com.example.associacao_potira.domain.enums.cannabis.Tested;
 import com.example.associacao_potira.domain.enums.cannabis.Nature;
@@ -14,7 +15,6 @@ import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.*;
 
-;
 
 @Getter
 @Setter
@@ -68,7 +68,7 @@ public class CannabisPlant implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "cannabis_id")
     )
     @ToString.Exclude
-    private List<CannabisProduct> products = new ArrayList<>();
+    private List<Product> products = new ArrayList<>();
 
     @Override
     public final boolean equals(Object o) {

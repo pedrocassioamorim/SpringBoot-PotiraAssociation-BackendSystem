@@ -1,5 +1,6 @@
 package com.example.associacao_potira.domain.company.data;
 
+import com.example.associacao_potira.domain.cannabis.CannabisPlant;
 import com.example.associacao_potira.domain.enums.cannabis.Nature;
 import jakarta.persistence.*;
 import lombok.*;
@@ -21,6 +22,9 @@ public class Product implements Serializable {
 
     private String name;
 
+    @ManyToOne
+    private CannabisPlant cannabis;
+
     @Enumerated(EnumType.STRING)
     private Nature nature;
 
@@ -30,8 +34,18 @@ public class Product implements Serializable {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    private Double dosage;
+
+    @Column(name = "dosage_unit")
+    private String dosageUnit;
+
     private BigDecimal price;
 
+    @Column(name = "quantity_stock")
+    private Integer quantityStock;
+
+    @Column(name = "quantity_minimum")
+    private Integer quantityMinimum;
 
 
 }
